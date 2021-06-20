@@ -1,0 +1,195 @@
+﻿<UserControl x:Class="LicenseGenerator.MVVM.View.GenerateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LicenseGenerator.MVVM.View" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <StackPanel>
+        <TextBlock Text="Generate a New License Key"
+                   Foreground="White"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,20"/>
+
+        <Border Width="800"
+                    Height="400">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                    <GradientStop Color="#ffffff" Offset="0"/>
+                    <GradientStop Color="#efefef" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Clip>
+                <RectangleGeometry RadiusX="5"
+                                       RadiusY="5"
+                                       Rect="0,0,700,400"/>
+            </Border.Clip>
+
+            <Grid>
+                <StackPanel Loaded="Xamal_IsLoaded">
+                    <TextBlock Text="Please write the Pxxx number and HMI Key number."
+                                   Foreground="Black"
+                                   FontSize="15"
+                                   FontWeight="DemiBold"
+                                   Margin="20,10,10,0"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                        <TextBlock Text="Pxxx number"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="20,0,20,0"/>
+                        <Grid MinWidth="80" HorizontalAlignment="Left">
+                            <TextBox Text="{Binding ElementName=Number_Textbox, Path=Text}"
+                                     Uid="Pxxx"
+                                     IsEnabled="False"
+                                     Style="{StaticResource ModernTextBox}"/>
+                            <TextBox Name="Number_Textbox"
+                                     Margin="7,4,7,4"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     MaxLength="4"/>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                        <TextBlock Text="Key"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="20,0,20,0"/>
+                        <StackPanel Orientation="Vertical" Height="62" Width="30">
+                            <RadioButton GroupName="Key_RadioButton"
+                                         Name="Use_Key"
+                                         VerticalAlignment="Top"
+                                         Margin="0,5,0,0"
+                                         IsChecked="True"
+                                         Checked="Key_RadioButton_CheckChanged"
+                                         Style="{StaticResource RadioButtonTheme}"/>
+                            <RadioButton GroupName="Key_RadioButton"
+                                         Name="No_Key"
+                                         VerticalAlignment="Bottom"
+                                         Margin="0,23,0,0"
+                                         Checked="Key_RadioButton_CheckChanged"
+                                         Style="{StaticResource RadioButtonTheme}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <Grid Width="80" HorizontalAlignment="Left">
+                                <TextBox Text="{Binding ElementName=Key_Textbox, Path=Text}"
+                                         Uid="12344567789"
+                                         IsEnabled="False"
+                                         Style="{StaticResource ModernTextBox}"/>
+                                <TextBox Name="Key_Textbox"
+                                     Margin="7,4,7,4"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     MaxLength="15"/>
+                            </Grid>
+                            <TextBlock Text="Paid license no Key nessesary"
+                                       FontSize="14"
+                                       Foreground="Black"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Bottom"
+                                       Margin="0,17,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                        <TextBlock Text="License type"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="20,0,20,0"/>
+                        <StackPanel Orientation="Vertical" Height="100" Width="30">
+                            <RadioButton GroupName="Type_RadioButton"
+                                         Name="One_Day"
+                                         VerticalAlignment="Top"
+                                         Margin="0,6,0,0"
+                                         IsChecked="True"
+                                         Checked="Type_RadioButton_CheckChanged"
+                                         Style="{StaticResource RadioButtonTheme}"/>
+                            <RadioButton GroupName="Type_RadioButton"
+                                         Name="Fourteen_Days"
+                                         VerticalAlignment="Bottom"
+                                         Margin="0,20,0,0"
+                                         Checked="Type_RadioButton_CheckChanged"
+                                         Style="{StaticResource RadioButtonTheme}"/>
+                            <RadioButton GroupName="Type_RadioButton"
+                                         Name="Thirty_Days"
+                                         VerticalAlignment="Bottom"
+                                         Margin="0,20,0,0"
+                                         Checked="Type_RadioButton_CheckChanged"
+                                         Style="{StaticResource RadioButtonTheme}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="1 day"
+                                       FontSize="14"
+                                       Foreground="Black"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Bottom"
+                                       Margin="0,3,0,0"/>
+                            <TextBlock Text="14 days"
+                                       FontSize="14"
+                                       Foreground="Black"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Bottom"
+                                       Margin="0,18,0,0"/>
+                            <TextBlock Text="30 days"
+                                       FontSize="14"
+                                       Foreground="Black"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Bottom"
+                                       Margin="0,18,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                        <TextBlock Text="Folder"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="20,0,20,0"/>
+                        <Button Width="490"
+                                Content=""
+                                Name="File_button"
+                                Style="{StaticResource ModernFileButton}"
+                                Click="File_Open_Click"/>
+                        <Button Width="20"
+                                Height="20"
+                                Margin="-40,0,0,0"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="File_Open_Click">
+                            <Image Name="Button_Image" 
+                               Stretch="Fill"/>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                        <TextBlock Text=""
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="20,0,20,0"/>
+                        <Button Name="create" 
+                                Content="Create"
+                                Width="100"
+                                Style="{StaticResource ModernClickButton}"
+                                Click="CreateButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </StackPanel>
+</UserControl>

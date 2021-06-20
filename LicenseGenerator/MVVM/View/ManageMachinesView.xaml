@@ -1,0 +1,228 @@
+﻿<UserControl x:Class="LicenseGenerator.MVVM.View.ManageMachinesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LicenseGenerator.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <StackPanel>
+        <TextBlock Text="Manage Machines"
+                   Foreground="White"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,20"/>
+
+        <Border Width="800"
+                    Height="400">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                    <GradientStop Color="#ffffff" Offset="0"/>
+                    <GradientStop Color="#efefef" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Clip>
+                <RectangleGeometry RadiusX="5"
+                                       RadiusY="5"
+                                       Rect="0,0,700,400"/>
+            </Border.Clip>
+            <Grid>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Margin="20,20,0,0">
+                        <Button Name ="Button_Add_Machines"
+                                Content="Add Machines"
+                                Width="150"
+                                Style="{StaticResource ModernClickButton}"
+                                Click="Add_Machines"/>
+                        <Button Name ="Button_Manage_Machines"
+                                Content="Manage Machines"
+                                Width="150"
+                                Margin="20,0,0,0"
+                                Style="{StaticResource ModernClickButton}"
+                                Click="Manage_Machines"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,10,100,0">
+                        <Label Background="#353340"
+                               Width="660"
+                               Style="{StaticResource MenuLine}"/>
+                    </StackPanel>
+                </StackPanel>
+                <Border Name="AddMachines" 
+                        Height="330" 
+                        Width="660" 
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Margin="20,0,0,0"
+                        BorderThickness="0"
+                        Background="Transparent"
+                        Visibility="Visible">
+                    <StackPanel>
+                        <TextBlock Text="Please write the Pxxx number, the customer name and mac address in the lines below."
+                                   Foreground="Black"
+                                   FontSize="15"
+                                   FontWeight="DemiBold"
+                                   Margin="0,0,10,0"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                            <TextBlock Text="Pxxx number"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="0,0,20,0"/>
+
+                            <Grid Width="80" HorizontalAlignment="Left">
+                                <TextBox Text="{Binding ElementName=Number_Textbox, Path=Text}"
+                                     Uid="Pxxx"
+                                     IsEnabled="False"
+                                     Style="{StaticResource ModernTextBox}"/>
+                                <TextBox Name="Number_Textbox"
+                                     Margin="7,4,7,4"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     MaxLength="4"/>
+
+                            </Grid>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                            <TextBlock Text="Customer name"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="0,0,20,0"/>
+                            <Grid Width="300" HorizontalAlignment="Left">
+                                <TextBox Text="{Binding ElementName=Customer_Textbox, Path=Text}"
+                                     Uid="Customer"
+                                     IsEnabled="False"
+                                     Style="{StaticResource ModernTextBox}"/>
+                                <TextBox Name="Customer_Textbox"
+                                     Margin="7,4,7,4"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     MaxLength="50"/>
+
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                            <TextBlock Text="Mac Address"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="0,0,20,0"/>
+                            <Grid Width="200" HorizontalAlignment="Left">
+                                <TextBox Text="{Binding ElementName=Mac_Textbox, Path=Text}"
+                                     Uid="MAC Address"
+                                     IsEnabled="False"
+                                     Style="{StaticResource ModernTextBox}"/>
+                                <TextBox Name="Mac_Textbox"
+                                     Margin="7,4,7,4"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     MaxLength="20"/>
+
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                            <TextBlock Text=""
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="0,0,20,0"/>
+                            <Button Name="submit" 
+                                Content="Submit"
+                                Width="100"
+                                Style="{StaticResource ModernClickButton}"
+                                Click="SubmitButton_Click"/>
+                            <Button Name="clear" 
+                                Content="Clear"
+                                Width="100"
+                                Style="{StaticResource ModernClickButton}"
+                                Margin="20,0,0,0"
+                                Click="ClearButton_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Name="ManageMachines" 
+                        Height="330" 
+                        Width="660" 
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Margin="20,0,0,0"
+                        BorderThickness="0"
+                        Background="Transparent"
+                        Visibility="Visible"
+                        ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <StackPanel>
+                        <TextBlock Text="Here you will find all stored machines"
+                                   Foreground="Black"
+                                   FontSize="15"
+                                   FontWeight="DemiBold"
+                                   Margin="0,0,10,0"/>
+                        <TextBlock Text="By clicking on the line with the machine number you can delete it."
+                                   Foreground="Black"
+                                   FontSize="13"
+                                   FontWeight="DemiBold"
+                                   Height="20"
+                                   Margin="0,10,0,0"/>
+                        <Border BorderThickness="2"
+                                BorderBrush="#353340"
+                                CornerRadius="7"
+                                Margin="0,10,0,0"
+                                Height="240">
+                            <StackPanel Margin="10,10,0,10">
+                                <ScrollViewer Grid.Row="1" 
+                                              HorizontalScrollBarVisibility="Disabled"
+                                              VerticalScrollBarVisibility="Visible"
+                                              Height="240">
+
+                                    <StackPanel Name ="All_MachinesView"
+                                                Orientation="Horizontal">
+                                         <!-- this will filled automatic by C# code -->
+                                        <ListView Name="MachineDetails" 
+                                                  BorderThickness="0" 
+                                                  BorderBrush="Transparent"
+                                                  Background="Transparent"
+                                                  FontSize="13"
+                                                  FontWeight="Bold"
+                                                  ItemsSource="{Binding }"
+                                                  SelectionChanged="MachineDetails_SelectionChanged">
+                                            <ListView.View>
+                                                <GridView x:Name="All_Data_List"
+                                                          ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle}" >
+                                                    <GridViewColumn x:Name="Pxxx_Number"
+                                                                    Header="Pxxx Number" 
+                                                                    Width="100"
+                                                                    DisplayMemberBinding="{Binding Path=Pxxx_Data_List}"/>
+                                                    <GridViewColumn x:Name="Customer"
+                                                                    Header="Customer" 
+                                                                    Width="378"                                                              
+                                                                    DisplayMemberBinding="{Binding Path=Customer_Data_List}"/>
+                                                    <GridViewColumn x:Name="Mac_Address"
+                                                                    Header="Mac Address" 
+                                                                    Width="137"
+                                                                    DisplayMemberBinding="{Binding Path=Mac_Data_List}"/>
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </StackPanel>
+</UserControl>

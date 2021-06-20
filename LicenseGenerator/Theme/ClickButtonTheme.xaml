@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style  BasedOn="{StaticResource {x:Type Button}}"
+            TargetType="{x:Type Button}"
+           x:Key="ModernClickButton">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="7"
+                            Background="{TemplateBinding Property=Background}"
+                            Width="{TemplateBinding Width}" 
+                            Height="25"
+                            Cursor="Hand">
+
+                            <Grid VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Background="Transparent">
+
+                                <TextBlock Text="{TemplateBinding Property=Content}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,-1,0,0"
+                                       FontSize="11"
+                                       Background="Transparent"
+                                       Foreground="White"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="False">
+                <Setter Property="Background" Value="#353340"/>
+            </Trigger>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="Background" Value="#353340"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#d40e20"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Black"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#d40e20"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
