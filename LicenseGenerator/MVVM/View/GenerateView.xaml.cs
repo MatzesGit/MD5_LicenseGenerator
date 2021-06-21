@@ -38,9 +38,8 @@ namespace LicenseGenerator.MVVM.View
             Button_Image.Source = bitmap;
 
             // initial License.dat path
-            string _LicenseFolder = @"License\";
-            string _LicenseFile   = "License.dat";
-            LicensePath = $"{ _insApplication_Path}{_LicenseFolder}{_LicenseFile}";
+            ApplicationSettings.Check_Settings_File_Exist();
+            LicensePath = _insApplication_Path + ApplicationSettings.Get_License_Path();
 
             FileButton_Content = _insFolderButtonFunktions.ShortViewLicensePath(LicensePath , 70);
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\CSharpPrograms\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj": {}
+    "C:\\CSharpPrograms\\MD5_LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj": {}
   },
   "projects": {
-    "C:\\CSharpPrograms\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj": {
+    "C:\\CSharpPrograms\\MD5_LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CSharpPrograms\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj",
+        "projectUniqueName": "C:\\CSharpPrograms\\MD5_LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj",
         "projectName": "LicenseGenerator",
-        "projectPath": "C:\\CSharpPrograms\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj",
+        "projectPath": "C:\\CSharpPrograms\\MD5_LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj",
         "packagesPath": "C:\\Users\\mathias.stritzke\\.nuget\\packages\\",
-        "outputPath": "C:\\CSharpPrograms\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator\\obj\\",
+        "outputPath": "C:\\CSharpPrograms\\MD5_LicenseGenerator\\LicenseGenerator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

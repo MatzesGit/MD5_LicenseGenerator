@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n7Uth9R+wluoGLQGPr4XsYbnpt5Y7Z84XcjQyg9KqB7NlNvAxIuSzGOz5J0f02ygQhwI8h3XUdNyjvwNk+t8kQ==",
+  "dgSpecHash": "puNDT66NqpBQ6JogvbkdY99EbYpgdPLmkMxqD74pE6ht14ypscDKZAVfOEDXfLgB/MH/DHWgVvzYjS1w5ba9jA==",
   "success": true,
-  "projectFilePath": "C:\\CSharpPrograms\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj",
+  "projectFilePath": "C:\\CSharpPrograms\\MD5_LicenseGenerator\\LicenseGenerator\\LicenseGenerator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mathias.stritzke\\.nuget\\packages\\microsoft-windowsapicodepack-core\\1.1.4\\microsoft-windowsapicodepack-core.1.1.4.nupkg.sha512",
     "C:\\Users\\mathias.stritzke\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.1\\microsoft.netcore.platforms.5.0.1.nupkg.sha512",
