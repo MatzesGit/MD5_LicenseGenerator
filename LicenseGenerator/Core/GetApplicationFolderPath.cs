@@ -3,18 +3,18 @@ using System.Reflection;
 using System.Windows.Forms;
 
 
-// this class is used for get the correct path for file and images
+// this class is used for get the correct path for file and images //
 
 namespace LicenseGenerator.Core
 {
     class GetApplicationFolderPath
     {
-        // Get Application folder
+        // Get Application folder //
         public static string GetFolderBetween(string strEnd)
         {
             string _strStart = "";
 
-            // get String between start and end string
+            // get String between start and end string //
             string strSource = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
             const int kNotFound = -1;

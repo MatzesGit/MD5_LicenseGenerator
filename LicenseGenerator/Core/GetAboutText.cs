@@ -9,7 +9,7 @@ namespace LicenseGenerator.Core
     class GetAboutText
     {
 
-        // config folder for store machine date
+        // config folder for store machine date //
         private const string Readme_File = "readme.txt ";
 
 
@@ -26,12 +26,12 @@ namespace LicenseGenerator.Core
 
             string[] _Text_items = new string[4];
 
-            // get application folder path
+            // get application folder path //
             string _Path = GetApplicationFolderPath.GetFolderBetween("bin");
 
             string _Readme_PathFile = _Path + Readme_File;
 
-            // Read string from .cfg 
+            // Read string from .cfg //
             StreamReader _insStreamReader = new StreamReader(_Readme_PathFile);
 
             string _Single_Line;

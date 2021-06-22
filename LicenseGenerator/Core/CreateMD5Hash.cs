@@ -8,12 +8,12 @@ namespace LicenseGenerator.Core
     {
         public static string CreateMD5(string input)
         {
-            // Use input string to calculate MD5 hash
+            // Use input string to calculate MD5 hash //
             using System.Security.Cryptography.MD5 _md5 = System.Security.Cryptography.MD5.Create();
             byte[] _inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
             byte[] _hashBytes = _md5.ComputeHash(_inputBytes);
 
-            // Convert the byte array to hexadecimal string
+            // Convert the byte array to hexadecimal string //
             StringBuilder sb = new StringBuilder();
             for (int _i = 0; _i < _hashBytes.Length; _i++)
             {

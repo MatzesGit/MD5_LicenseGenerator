@@ -142,14 +142,120 @@
                                      BorderThickness="0"
                                      Foreground="White"
                                      CaretBrush="White"
-                                     MaxLength="15"/>
+                                     MaxLength="15"
+                                     KeyDown="CheckKeyDown"/>
                             </Grid>
-                            <Button Name="Password_Settings_Save" 
+                            <Button Name="Password_OK" 
                                 Content="OK"
                                 Width="30"
                                 Margin="10,0,0,0"
                                 Style="{StaticResource ModernClickButton}"
+                                Click="Check_Admin_Passwort"/>
+                        </StackPanel>
+                        <StackPanel Visibility="Hidden"
+                                    Name ="Show_Passwords_Panel">
+                            <StackPanel Margin="0,20,0,0">
+                                <Label Background="#353340"
+                               Width="660"
+                               Style="{StaticResource MenuLine}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                <TextBlock Text="1 day password"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="0,0,20,0"/>
+                                <Grid MinWidth="150" HorizontalAlignment="Left">
+                                    <TextBox Text="{Binding ElementName=One_Day_Textbox, Path=Text}"
+                                     Uid="1 day"
+                                     IsEnabled="False"
+                                     Style="{StaticResource ModernTextBox}"/>
+                                    <TextBox Name="One_Day_Textbox"
+                                     Margin="7,4,7,4"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     MaxLength="50"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <TextBlock Text="14 days password"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="0,0,20,0"/>
+                                <Grid MinWidth="150" HorizontalAlignment="Left">
+                                    <TextBox Text="{Binding ElementName=Fourteen_Days_Textbox, Path=Text}"
+                                     Uid="14 days"
+                                     IsEnabled="False"
+                                     Style="{StaticResource ModernTextBox}"/>
+                                    <TextBox Name="Fourteen_Days_Textbox"
+                                     Margin="7,4,7,4"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     MaxLength="50"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <TextBlock Text="30 days password"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="0,0,20,0"/>
+                                <Grid MinWidth="150" HorizontalAlignment="Left">
+                                    <TextBox Text="{Binding ElementName=Thirty_Days_Textbox, Path=Text}"
+                                     Uid="30 days"
+                                     IsEnabled="False"
+                                     Style="{StaticResource ModernTextBox}"/>
+                                    <TextBox Name="Thirty_Days_Textbox"
+                                     Margin="7,4,7,4"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     MaxLength="50"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <TextBlock Text="Paid password"
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="0,0,20,0"/>
+                                <Grid MinWidth="150" HorizontalAlignment="Left">
+                                    <TextBox Text="{Binding ElementName=Paid_Textbox, Path=Text}"
+                                     Uid="fully paid"
+                                     IsEnabled="False"
+                                     Style="{StaticResource ModernTextBox}"/>
+                                    <TextBox Name="Paid_Textbox"
+                                     Margin="7,4,7,4"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     MaxLength="50"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                                <TextBlock Text=""
+                                   Foreground="Black"
+                                   FontSize="17"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Margin="0,0,20,0"/>
+                                <Button Name="Password_Settings_Change" 
+                                Content="Change"
+                                Width="100"
+                                Style="{StaticResource ModernClickButton}"
                                 Click="App_Settings_Save_Click"/>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </Border>

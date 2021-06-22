@@ -38,9 +38,8 @@ namespace LicenseGenerator.MVVM.View
             Button_Image.Source = bitmap;
 
             // initial License.dat path
-            string _LicenseFolder = @"License\";
-            string _LicenseFile   = "License.dat";
-            LicensePath = $"{ _insApplication_Path}{_LicenseFolder}{_LicenseFile}";
+            ApplicationSettings.Check_Settings_File_Exist();
+            LicensePath = ApplicationSettings.Get_License_Path();
 
             FileButton_Content = _insFolderButtonFunktions.ShortViewLicensePath(LicensePath , 70);
         }
@@ -125,69 +124,35 @@ namespace LicenseGenerator.MVVM.View
         {      
             if (Xaml_IsEnabledSuccessfully)
             {
-                // Get machine data out of database
-                string[] _CustomerData = GetSetMachineInformations.ReadFromFile(Machine_Number);
 
-                // Get interal license passwords - needs some work on settings
-                string[] _Passwords = new string[4];
-
-                string _Password_Key = "";
-
-                string _LicenseKey_String = "";
-
-                int _License_Type;
-
-                // temp solution - 1 day
-                _Passwords[0] = "X67ADs+5";
-                // temp solution - 14 days
-                _Passwords[1] = "Wsea14o2";
-                // temp solution - 30 days
-                _Passwords[2] = "D6ASf%8p";
-                // temp solution - paid
-                _Passwords[3] = "I6rz90x";
+                int _License_Type = 0;
 
                 if (Key_RadioButton_IsChecked == 1)
                 {
-                    _License_Type = 1;
 
                     // Check which day license should be created
                     if (Type_RadioButton_IsChecked == 1)
                     {
-                        _Password_Key = _Passwords[0];
+                        _License_Type = 1;
                     }
                     if (Type_RadioButton_IsChecked == 2)
                     {
-                        _Password_Key = _Passwords[1];
+                        _License_Type = 2;
                     }
                     if (Type_RadioButton_IsChecked == 3)
                     {
-                        _Password_Key = _Passwords[2];
+                        _License_Type = 3;
                     }
                 }
                 else
                 {
-                    _License_Type = 2;
+                    _License_Type = 4;
                 }
 
-                if (_License_Type == 1)
-                {
-                    _LicenseKey_String = $"{_CustomerData[2]} {Key_Number} {_Password_Key}";
-                }
-                else if (_License_Type == 2)
-                {
-                    _LicenseKey_String = $"{_CustomerData[2]} {_Password_Key}";
-                }
-                else
-                {
-                    // Error Creation
-                }
-
-                string LicenseKey_Hash = CreateMD5Hash.CreateMD5(_LicenseKey_String);
-                bool _WriteDoneOk = GenerateLicenseFile.GenerateLicense(LicenseKey_Hash, LicensePath);
-                Console.WriteLine(LicenseKey_Hash);
+                bool _WriteDoneOk = GenerateLicenseFile.GenerateLicense(_License_Type, Machine_Number, Key_Number, LicensePath);
 
                 string _message;
-                string _caption = "Add Machine";
+                string _caption = "Licnese";
 
                 if (_WriteDoneOk)
                 {

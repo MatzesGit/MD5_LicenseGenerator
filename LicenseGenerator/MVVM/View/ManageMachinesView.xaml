@@ -189,7 +189,7 @@
 
                                     <StackPanel Name ="All_MachinesView"
                                                 Orientation="Horizontal">
-                                         <!-- this will filled automatic by C# code -->
+                                         <!--// this will filled automatic by C# code //-->
                                         <ListView Name="MachineDetails" 
                                                   BorderThickness="0" 
                                                   BorderBrush="Transparent"

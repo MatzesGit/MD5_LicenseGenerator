@@ -10,14 +10,13 @@ namespace LicenseGenerator.Core
     class EncryptionDecryption
     {
 
-        //  Call this function to remove the key from memory after use for security
+        //  Call this function to remove the key from memory after use for security //
         [DllImport("KERNEL32.DLL", EntryPoint = "RtlZeroMemory")]
         public static extern bool ZeroMemory(IntPtr Destination, int Length);
 
-        /// <summary>
-        /// Creates a random salt that will be used to encrypt your file. This method is required on FileEncrypt.
-        /// </summary>
-        /// <returns></returns>
+
+        // Creates a random salt that will be used to encrypt your file. This method is required on FileEncrypt. //
+
         public static byte[] GenerateRandomSalt()
         {
             byte[] data = new byte[32];
@@ -26,7 +25,7 @@ namespace LicenseGenerator.Core
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    // Fille the buffer with the generated data
+                    // Fille the buffer with the generated data //
                     rng.GetBytes(data);
                 }
             }
@@ -34,21 +33,20 @@ namespace LicenseGenerator.Core
             return data;
         }
 
-        /// <summary>
-        /// Encrypts a file from its path and a plain password.
-        /// </summary>
+        // Encrypts a file from its path and a plain password. //
+
         public void FileEncrypt(string inputFile, string password)
         {
-            //generate random salt
+            //generate random salt //
             byte[] salt = GenerateRandomSalt();
 
-            //create output file name
+            //create output file name //
             FileStream fsCrypt = new FileStream(inputFile + ".aes", FileMode.Create);
 
-            //convert password string to byte arrray
+            //convert password string to byte arrray //
             byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(password);
 
-            //Set Rijndael symmetric encryption algorithm
+            //Set Rijndael symmetric encryption algorithm //
             RijndaelManaged AES = new RijndaelManaged
             {
                 KeySize = 256,
@@ -56,22 +54,22 @@ namespace LicenseGenerator.Core
                 Padding = PaddingMode.PKCS7
             };
 
-            //"What it does is repeatedly hash the user password along with the salt." High iteration counts.
+            //"What it does is repeatedly hash the user password along with the salt." High iteration counts. //
             var key = new Rfc2898DeriveBytes(passwordBytes, salt, 50000);
             AES.Key = key.GetBytes(AES.KeySize / 8);
             AES.IV = key.GetBytes(AES.BlockSize / 8);
 
-            //Cipher modes:
+            //Cipher modes: //
             AES.Mode = CipherMode.ECB;
 
-            // write salt to the begining of the output file, so in this case can be random every time
+            // write salt to the begining of the output file, so in this case can be random every time //
             fsCrypt.Write(salt, 0, salt.Length);
 
             CryptoStream cs = new CryptoStream(fsCrypt, AES.CreateEncryptor(), CryptoStreamMode.Write);
 
             FileStream fsIn = new FileStream(inputFile, FileMode.Open);
 
-            //create a buffer (1mb) so only this amount will allocate in the memory and not the whole file
+            // create a buffer (1mb) so only this amount will allocate in the memory and not the whole file //
             byte[] buffer = new byte[1048576];
             int read;
 
@@ -82,7 +80,7 @@ namespace LicenseGenerator.Core
                     cs.Write(buffer, 0, read);
                 }
 
-                // Close up
+                // Close up //
                 fsIn.Close();
             }
             catch (Exception ex)
@@ -96,9 +94,7 @@ namespace LicenseGenerator.Core
             }
         }
 
-        /// <summary>
-        /// Decrypts an encrypted file with the FileEncrypt method through its path and the plain password.
-        /// </summary>
+        // Decrypts an encrypted file with the FileEncrypt method through its path and the plain password. //
         public void FileDecrypt(string inputFile, string outputFile, string password)
         {
             byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(password);

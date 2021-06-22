@@ -11,7 +11,7 @@ namespace LicenseGenerator.Core
     public class GetSetMachineInformations
     {
 
-        // config folder for store machine date
+        // config folder for store machine date //
         private const string MachineStorageFile = "cfg\\machines.cfg ";
 
 
@@ -23,10 +23,10 @@ namespace LicenseGenerator.Core
 
         public static bool WriteToFile(string Machine_Number, string Machine_Customer, string Machine_Mac)
         {
-            // create a combined string
+            // create a combined string //
             string _MachineInformations = ToMachineCfgString(Machine_Number, Machine_Customer, Machine_Mac);
 
-            // get application folder path
+            // get application folder path //
             string _Path = GetApplicationFolderPath.GetFolderBetween("bin");
 
             string _MachineStoragePathFile = _Path + MachineStorageFile;
@@ -35,7 +35,7 @@ namespace LicenseGenerator.Core
 
             try
             {
-                // Save string to .cfg 
+                // Save string to .cfg //
                 FileStream _insFileStream = new FileStream(_MachineStoragePathFile, FileMode.OpenOrCreate, FileAccess.Write);
                 StreamWriter _insStreamWriter = new StreamWriter(_insFileStream);
                 _insStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
@@ -54,17 +54,17 @@ namespace LicenseGenerator.Core
 
         public static string[] ReadFromFile(string Machine_Number)
         {
-            // get application folder path
+            // get application folder path //
             string _Path = GetApplicationFolderPath.GetFolderBetween("bin");
 
             string _MachineStoragePathFile = _Path + MachineStorageFile;
 
-            string[] _CustomerData = new string[3]; // fixed string of 3
+            string[] _CustomerData = new string[3];
 
-            // Get String from file
+            // Get String from file //
             try
             {
-                // Read string from .cfg 
+                // Read string from .cfg //
                 StreamReader _insStreamReader = new StreamReader(_MachineStoragePathFile);
 
                 string _Single_Parameter;
@@ -101,12 +101,12 @@ namespace LicenseGenerator.Core
 
         public static List<List<string>> ReadAllFromFile()
         {
-            // get application folder path
+            // get application folder path //
             string _Path = GetApplicationFolderPath.GetFolderBetween("bin");
 
             string _MachineStoragePathFile = _Path + MachineStorageFile;
 
-            // Read string from .cfg 
+            // Read string from .cfg //
             StreamReader _insStreamReader = new StreamReader(_MachineStoragePathFile);
 
             string _Single_Parameter;
@@ -154,7 +154,7 @@ namespace LicenseGenerator.Core
 
             }
 
-            // get application folder path
+            // get application folder path //
             string _Path = GetApplicationFolderPath.GetFolderBetween("bin");
 
             string _MachineStoragePathFile = _Path + MachineStorageFile;
@@ -163,7 +163,7 @@ namespace LicenseGenerator.Core
 
             try
             {
-                // Save string to .cfg 
+                // Save string to .cfg //
                 FileStream _insFileStream = new FileStream(_MachineStoragePathFile, FileMode.Create, FileAccess.Write);
                 StreamWriter _insStreamWriter = new StreamWriter(_insFileStream);
                 _insStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
