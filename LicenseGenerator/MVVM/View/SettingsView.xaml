@@ -142,7 +142,8 @@
                                      BorderThickness="0"
                                      Foreground="White"
                                      CaretBrush="White"
-                                     MaxLength="15"/>
+                                     MaxLength="15"
+                                     KeyDown="CheckKeyDown"/>
                             </Grid>
                             <Button Name="Password_OK" 
                                 Content="OK"

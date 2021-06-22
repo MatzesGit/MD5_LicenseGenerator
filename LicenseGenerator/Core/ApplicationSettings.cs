@@ -26,10 +26,13 @@ namespace LicenseGenerator.Core
 
             if (Input_Password == Admin_Password)
             {
-                List<string> _Passwords = Get_License_Passwords();
+                if (Settings.Capacity != 0)
+                {
+                    Get_Settings_Data();
+                }
 
                 int _i = 0;
-                foreach(var _Password in _Passwords)
+                foreach(string _Password in Settings)
                 {
                     Password_Fields[_i] = _Password;
                     _i++;
@@ -46,27 +49,30 @@ namespace LicenseGenerator.Core
         }
 
 
-        public static bool Check_Settings_File_Exist()
+        // Check if file exist if not create one at application start //
+        public static bool Check_Settings_File_Exist() 
         {
-            // get settings path and file
+            // get settings path and file //
             string _Settings_PathFile = GetApplicationFolderPath.GetFolderBetween("bin") + Settings_PathFile;
 
 
-            // Check for file exist if not create one
-            string _Init_LicenseDat_PathFile = "License\\license.dat";
+            // Check for file exist if not create one //
+            string _Init_LicenseDat_PathFile = $"{GetApplicationFolderPath.GetFolderBetween("bin")}License\\license.dat";
 
             string[] _Passwords = new string[4];
 
-            // temp solution - 1 day
+            // Start Passwords //
+
+            // 1 day licnese  //
             _Passwords[0] = "123456789";
-            // temp solution - 14 days
+            // 14 days license //
             _Passwords[1] = "123456789";
-            // temp solution - 30 days
+            // 30 days license //
             _Passwords[2] = "123456789";
-            // temp solution - paid
+            // paid license //
             _Passwords[3] = "123456789";
 
-            // Generate Settings file
+            // Generate Settings string //
             string _SettingsFile = $"{_Init_LicenseDat_PathFile}[License]" +
                                    $"\r\n\n{ _Passwords[0]};{ _Passwords[1]};{ _Passwords[2]};{ _Passwords[3]}[Passwords]";
 
@@ -76,7 +82,7 @@ namespace LicenseGenerator.Core
             {
                 if (File.Exists(_Settings_PathFile + ".aes") == false)
                 {
-                    // Save string to .cfg 
+                    // Save string to .cfg //
                     FileStream _insFileStream = new FileStream(_Settings_PathFile, FileMode.OpenOrCreate, FileAccess.Write);
                     StreamWriter _insStreamWriter = new StreamWriter(_insFileStream);
                     _insStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
@@ -100,12 +106,20 @@ namespace LicenseGenerator.Core
             return _WriteDoneOk;
         }
 
+        // Generate a settings after saving new parameters // 
         public static bool Set_Settings_Data(string[] Data)
         {
-            // get settings path and file
+            // get settings path and file //
             string _Settings_PathFile = GetApplicationFolderPath.GetFolderBetween("bin") + Settings_PathFile;
 
-            // Generate Settings file
+            // Check for data input is empty - in this case use saved values //
+            if (Data[0] == ""){ Data[0] = Settings[0]; }
+            if (Data[1] == ""){ Data[1] = Settings[1]; }
+            if (Data[2] == ""){ Data[2] = Settings[2]; }
+            if (Data[3] == ""){ Data[3] = Settings[3]; }
+            if (Data[4] == ""){ Data[4] = Settings[4]; }
+
+            // Generate Settings string //
             string _SettingsFile = $"{Data[0]}[License]" +
                                    $"\r\n\n{Data[1]};{Data[2]};{Data[3]};{Data[4]}[Passwords]";
 
@@ -116,10 +130,9 @@ namespace LicenseGenerator.Core
                 if (File.Exists(_Settings_PathFile + ".aes"))
                 {
                     File.Delete(_Settings_PathFile + ".aes");
-                }
-                    
+                }                   
                 
-                // Save string to .cfg     
+                // Save string to .cfg //     
                 FileStream _insFileStream = new FileStream(_Settings_PathFile, FileMode.Create, FileAccess.Write);     
                 StreamWriter _insStreamWriter = new StreamWriter(_insFileStream);
                 _insStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
@@ -153,7 +166,7 @@ namespace LicenseGenerator.Core
         {
             try
             {
-                // get settings path and file
+                // get settings path and file //
                 string _Settings_PathFile = GetApplicationFolderPath.GetFolderBetween("bin") + Settings_PathFile;
 
                 EncryptionDecryption _insEncryptionDecryption = new EncryptionDecryption();
@@ -212,14 +225,19 @@ namespace LicenseGenerator.Core
             }
         }
 
-        private static List<string> Get_License_Passwords()
+
+        public static List<string> Get_License_Passwords()
         {
-            if (Settings == null)
+            if (Settings.Capacity == 0)
             {
                 Get_Settings_Data();
-            }
 
-            return Settings;
+                return Settings;
+            }
+            else
+            {
+                return Settings;
+            }
         }
     }
 }

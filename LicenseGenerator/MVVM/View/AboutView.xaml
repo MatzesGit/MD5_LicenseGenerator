@@ -32,7 +32,7 @@
             <Grid>
                 <StackPanel Name ="AboutView_Stackpanel"
                             Margin="20,20,0,0">
-                    <!-- this will filled automatic by C# code -->
+                    <!--// this will filled automatic by C# code //-->
                 </StackPanel>
             </Grid>
         </Border>

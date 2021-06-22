@@ -6,11 +6,11 @@ namespace LicenseGenerator.Core
 {
     class FolderButtonFunktions
     {
-        // short the path and folder, if nessesary for showing the text inside button in correct length
+        // short the path and folder, if nessesary for showing the text inside button in correct length //
         public string ShortViewLicensePath(string _LicensePath, int _MaxLength)
         {
 
-            // Reverse string for cut
+            // Reverse string for cut //
             static string ReverseString(string _InputString)
             {
                 string _ReverseString = "";
@@ -27,10 +27,10 @@ namespace LicenseGenerator.Core
                 return _ReverseString;
             }
 
-            // call reverse string method
+            // call reverse string method //
             string _ReverseString = ReverseString(_LicensePath);
 
-            // Split string in parts and cut the rest
+            // Split string in parts and cut the rest //
             string[] _Subs = _ReverseString.Split('\\');
             string _NewString = "";
 
@@ -53,17 +53,17 @@ namespace LicenseGenerator.Core
                 }
                 else if (_Sub.Contains(":"))
                 {
-                    // Drive name - eg C:
+                    // Drive name - eg C: //
                     _NewString = $"{_NewString}\\{_Sub}";
                 }
             }
 
-            // call reverse string method
+            // call reverse string method //
             return ReverseString(_NewString);
         }
 
 
-        // Create path out of path and file string - is used for the file open windwos template
+        // Create path out of path and file string - is used for the file open windwos template //
         public string Split_Path_From_File(string FileButton_Content)
         {
             string[] _Subs = FileButton_Content.Split('\\');

@@ -45,7 +45,7 @@ namespace LicenseGenerator.MVVM.View
             Button_Image.Source = bitmap;
 
             ApplicationSettings.Check_Settings_File_Exist();
-            LicensePath = _insApplication_Path + ApplicationSettings.Get_License_Path();
+            LicensePath = ApplicationSettings.Get_License_Path();
 
             FileButton_Content = _insFolderButtonFunktions.ShortViewLicensePath(LicensePath, 70);
         }
@@ -89,18 +89,37 @@ namespace LicenseGenerator.MVVM.View
             OpenFileDialog openFileDialog = new OpenFileDialog();
             var _insfileDialog = openFileDialog;
 
-            _insfileDialog.InitialDirectory = LicensePath;
+            _insfileDialog.InitialDirectory = _insFolderButtonFunktions.Split_Path_From_File(LicensePath);
             _insfileDialog.Filter = "dat files (*.dat)|*.dat|All files (*.*)|*.*";
             _insfileDialog.FilterIndex = 2;
             _insfileDialog.RestoreDirectory = true;
 
             if (_insfileDialog.ShowDialog() == true)
             {
-                //
+                LicensePath = _insfileDialog.FileName;
             }
 
-            //FileButton_Content = _insFolderButtonFunktions.ShortViewLicensePath(LicensePath, 70);
+            FileButton_Content = _insFolderButtonFunktions.ShortViewLicensePath(LicensePath, 70);
         }
+
+
+        private void CheckKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                string[] _Password_Fields = ApplicationSettings.Check_Admin_Passwort(Textbox_Password);
+
+                if (_Password_Fields[0] == "true")
+                {
+                    Show_Password_TextBoxes(_Password_Fields);
+                }
+                else
+                {
+                    // Wrong password
+                }
+            }
+        }
+
 
         private void Check_Admin_Passwort(object sender, RoutedEventArgs e)
         {
@@ -140,6 +159,7 @@ namespace LicenseGenerator.MVVM.View
             _Settings_Data[4] = Textbox_Paid_Password;
 
             ApplicationSettings.Set_Settings_Data(_Settings_Data);
+
         }
     }
 }
