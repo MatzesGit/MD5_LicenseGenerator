@@ -1,8 +1,8 @@
-﻿
-Fc:\csharpprograms\licensegenerator\licensegenerator\LicenseGenerator\App.xaml;;
-Fc:\csharpprograms\licensegenerator\licensegenerator\LicenseGenerator\MainWindow.xaml;;
-Fc:\csharpprograms\licensegenerator\licensegenerator\LicenseGenerator\MVVM\View\AboutView.xaml;;
-Fc:\csharpprograms\licensegenerator\licensegenerator\LicenseGenerator\MVVM\View\AddMachinesView.xaml;;
-Fc:\csharpprograms\licensegenerator\licensegenerator\LicenseGenerator\MVVM\View\GenerateView.xaml;;
-Fc:\csharpprograms\licensegenerator\licensegenerator\LicenseGenerator\MVVM\View\SettingsView.xaml;;
+﻿C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\obj\Release\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+FC:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\App.xaml;;
+FC:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\MainWindow.xaml;;
+FC:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\MVVM\View\AboutView.xaml;;
+FC:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\MVVM\View\GenerateView.xaml;;
+FC:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\MVVM\View\ManageMachinesView.xaml;;
+FC:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\MVVM\View\SettingsView.xaml;;
 

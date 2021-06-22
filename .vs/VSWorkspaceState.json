@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LicenseGenerator"
+    "\\LicenseGenerator",
+    "\\LicenseGenerator\\Core",
+    "\\LicenseGenerator\\MVVM",
+    "\\LicenseGenerator\\MVVM\\View"
   ],
+  "SelectedNode": "\\LicenseGenerator.sln",
   "PreviewInSolutionExplorer": false
 }
