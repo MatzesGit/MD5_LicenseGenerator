@@ -50,93 +50,6 @@ namespace LicenseGenerator.MVVM.View
             FileButton_Content = _insFolderButtonFunktions.ShortViewLicensePath(LicensePath, 70);
         }
 
-        // Textboxes
-        public string Textbox_Password { get => Password_Textbox.Password; }
-        public string Textbox_One_Day_Password { get => One_Day_Textbox.Text; set => One_Day_Textbox.Text = value; }
-        public string Textbox_Fourteen_Days_Password { get => Fourteen_Days_Textbox.Text; set => Fourteen_Days_Textbox.Text = value; }
-        public string Textbox_Thirty_Days_Password { get => Thirty_Days_Textbox.Text; set => Thirty_Days_Textbox.Text = value; }
-        public string Textbox_Paid_Password { get => Paid_Textbox.Text; set => Paid_Textbox.Text = value; }
-
-        // makes Password adjusments visible
-        private void Open_Password_Settings(object sender, RoutedEventArgs e)
-        {
-            AppSettings.Width = 0;
-            AppSettings.Height = 0;
-            AppSettings.Visibility = Visibility.Hidden;
-            PasswordSettings.Width = 660;
-            PasswordSettings.Height = 320;
-            PasswordSettings.Visibility = Visibility.Visible;
-            Button_Password_Settings.IsEnabled = false;
-            Button_App_Settins.IsEnabled = true;
-
-        }
-
-        // makes App adjusments visible
-        private void Open_App_Settings(object sender, RoutedEventArgs e)
-        {
-            PasswordSettings.Width = 0;
-            PasswordSettings.Height = 0;
-            PasswordSettings.Visibility = Visibility.Hidden;
-            AppSettings.Width = 660;
-            AppSettings.Height = 320;
-            AppSettings.Visibility = Visibility.Visible;
-            Button_App_Settins.IsEnabled = false;
-            Button_Password_Settings.IsEnabled = true;
-        }
-
-        private void File_Open_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            var _insfileDialog = openFileDialog;
-
-            _insfileDialog.InitialDirectory = _insFolderButtonFunktions.Split_Path_From_File(LicensePath);
-            _insfileDialog.Filter = "dat files (*.dat)|*.dat|All files (*.*)|*.*";
-            _insfileDialog.FilterIndex = 2;
-            _insfileDialog.RestoreDirectory = true;
-
-            if (_insfileDialog.ShowDialog() == true)
-            {
-                LicensePath = _insfileDialog.FileName;
-            }
-
-            FileButton_Content = _insFolderButtonFunktions.ShortViewLicensePath(LicensePath, 70);
-        }
-
-
-        private void CheckKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                string[] _Password_Fields = ApplicationSettings.Check_Admin_Passwort(Textbox_Password);
-
-                if (_Password_Fields[0] == "true")
-                {
-                    Show_Password_TextBoxes(_Password_Fields);
-                }
-                else
-                {
-                    // Wrong password
-                }
-            }
-        }
-
-
-        private void Check_Admin_Passwort(object sender, RoutedEventArgs e)
-        {
-            if (Textbox_Password != null)
-            {
-                string[] _Password_Fields = ApplicationSettings.Check_Admin_Passwort(Textbox_Password);
-
-                if (_Password_Fields[0] == "true")
-                {
-                    Show_Password_TextBoxes(_Password_Fields);
-                }
-                else
-                {
-                    // Wrong password
-                }
-            }
-        }
 
         public void Show_Password_TextBoxes(string[] _Password_Fields)
         {
@@ -160,6 +73,99 @@ namespace LicenseGenerator.MVVM.View
 
             ApplicationSettings.Set_Settings_Data(_Settings_Data);
 
+        }
+
+
+        // Textboxes
+        public string Textbox_Password { get => Password_Textbox.Password; }
+        public string Textbox_One_Day_Password { get => One_Day_Textbox.Text; set => One_Day_Textbox.Text = value; }
+        public string Textbox_Fourteen_Days_Password { get => Fourteen_Days_Textbox.Text; set => Fourteen_Days_Textbox.Text = value; }
+        public string Textbox_Thirty_Days_Password { get => Thirty_Days_Textbox.Text; set => Thirty_Days_Textbox.Text = value; }
+        public string Textbox_Paid_Password { get => Paid_Textbox.Text; set => Paid_Textbox.Text = value; }
+
+
+        // makes Password adjusments visible
+        private void Open_Password_Settings(object sender, RoutedEventArgs e)
+        {
+            AppSettings.Width = 0;
+            AppSettings.Height = 0;
+            AppSettings.Visibility = Visibility.Hidden;
+            PasswordSettings.Width = 660;
+            PasswordSettings.Height = 320;
+            PasswordSettings.Visibility = Visibility.Visible;
+            Button_Password_Settings.IsEnabled = false;
+            Button_App_Settins.IsEnabled = true;
+
+        }
+
+
+        // makes App adjusments visible
+        private void Open_App_Settings(object sender, RoutedEventArgs e)
+        {
+            PasswordSettings.Width = 0;
+            PasswordSettings.Height = 0;
+            PasswordSettings.Visibility = Visibility.Hidden;
+            AppSettings.Width = 660;
+            AppSettings.Height = 320;
+            AppSettings.Visibility = Visibility.Visible;
+            Button_App_Settins.IsEnabled = false;
+            Button_Password_Settings.IsEnabled = true;
+        }
+
+
+        private void File_Open_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            var _insfileDialog = openFileDialog;
+
+            _insfileDialog.InitialDirectory = _insFolderButtonFunktions.Split_Path_From_File(LicensePath);
+            _insfileDialog.Filter = "dat files (*.dat)|*.dat|All files (*.*)|*.*";
+            _insfileDialog.FilterIndex = 2;
+            _insfileDialog.RestoreDirectory = true;
+
+            if (_insfileDialog.ShowDialog() == true)
+            {
+                LicensePath = _insfileDialog.FileName;
+            }
+
+            FileButton_Content = _insFolderButtonFunktions.ShortViewLicensePath(LicensePath, 70);
+        }
+
+
+        private void Password_Check()
+        {
+            string[] _Password_Fields = ApplicationSettings.Check_Admin_Passwort(Textbox_Password);
+
+            if (_Password_Fields[0] == "true")
+            {
+                Show_Password_TextBoxes(_Password_Fields);
+            }
+            else
+            {
+                // Error writing license
+                string _message = "Wrong Password, please try again";
+                string _caption = "Password Alert";
+                MessageBoxButton buttons = MessageBoxButton.OK;
+                _ = MessageBox.Show(_message, _caption, buttons);
+            }
+        }
+
+
+        private void CheckKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                Password_Check();
+            }
+        }
+
+
+        private void Check_Admin_Passwort(object sender, RoutedEventArgs e)
+        {
+            if (Textbox_Password != null)
+            {
+                Password_Check();
+            }
         }
     }
 }

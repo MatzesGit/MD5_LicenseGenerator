@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\LicenseGenerator",
+    "\\LicenseGenerator\\Core",
+    "\\LicenseGenerator\\MVVM",
+    "\\LicenseGenerator\\MVVM\\View"
+  ],
+  "SelectedNode": "\\LicenseGenerator\\Core\\CreateMD5Hash.cs",
+  "PreviewInSolutionExplorer": false
+}

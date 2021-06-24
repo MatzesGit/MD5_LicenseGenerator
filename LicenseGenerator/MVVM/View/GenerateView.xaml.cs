@@ -69,7 +69,7 @@ namespace LicenseGenerator.MVVM.View
             _insfileDialog.FilterIndex = 2;
             _insfileDialog.RestoreDirectory = true;
 
-            if (_insfileDialog.ShowDialog() == true)
+            if (_insfileDialog.ShowDialog() == true &&  _insfileDialog.CheckPathExists)
             {
                 LicensePath = _insfileDialog.FileName;
             }
