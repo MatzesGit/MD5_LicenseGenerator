@@ -11,7 +11,7 @@ namespace LicenseGenerator.Core
 
         private readonly static List<string> Settings = new List<string>();
 
-        const string Settings_PathFile = "cfg\\settings.cfg";
+        const string Settings_PathFile = "bin\\settings.dat";
 
         protected const string En_Decryption_Password = "mP?z#123Ay@Hij";
 
@@ -73,29 +73,20 @@ namespace LicenseGenerator.Core
             _Passwords[3] = "123456789";
 
             // Generate Settings string //
-            string _SettingsFile = $"{_Init_LicenseDat_PathFile}[License]" +
-                                   $"\r\n\n{ _Passwords[0]};{ _Passwords[1]};{ _Passwords[2]};{ _Passwords[3]}[Passwords]";
+            string _Settings_Text = $"{_Init_LicenseDat_PathFile}[License]" +
+                                   $"{ _Passwords[0]};{ _Passwords[1]};{ _Passwords[2]};{ _Passwords[3]}[Passwords]";
 
             bool _WriteDoneOk = false;
 
             try
             {
-                if (File.Exists(_Settings_PathFile + ".aes") == false)
+                if (File.Exists(_Settings_PathFile) == false)
                 {
-                    // Save string to .cfg //
-                    FileStream _insFileStream = new FileStream(_Settings_PathFile, FileMode.OpenOrCreate, FileAccess.Write);
-                    StreamWriter _insStreamWriter = new StreamWriter(_insFileStream);
-                    _insStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
-                    _insStreamWriter.Write(_SettingsFile);
-                    _insStreamWriter.Flush();
-                    _insStreamWriter.Close();
-                    _WriteDoneOk = true;
-
                     EncryptionDecryption _insEncryptionDecryption = new EncryptionDecryption();
 
-                    _insEncryptionDecryption.FileEncrypt(_Settings_PathFile, En_Decryption_Password);
+                    _insEncryptionDecryption.FileEncrypt(_Settings_PathFile, _Settings_Text, En_Decryption_Password);
 
-                    File.Delete(_Settings_PathFile);
+                    _WriteDoneOk = true;
                 }
 
             }
@@ -120,38 +111,29 @@ namespace LicenseGenerator.Core
             if (Data[4] == ""){ Data[4] = Settings[4]; }
 
             // Generate Settings string //
-            string _SettingsFile = $"{Data[0]}[License]" +
-                                   $"\r\n\n{Data[1]};{Data[2]};{Data[3]};{Data[4]}[Passwords]";
+            string _Settings_Text = $"{Data[0]}[License]" +
+                                    $"{Data[1]};{Data[2]};{Data[3]};{Data[4]}[Passwords]";
 
             bool _WriteDoneOk = false;
 
             try
             {
-                if (File.Exists(_Settings_PathFile + ".aes"))
+                if (File.Exists(_Settings_PathFile))
                 {
-                    File.Delete(_Settings_PathFile + ".aes");
+                    File.Delete(_Settings_PathFile);
                 }                   
-                
-                // Save string to .cfg //     
-                FileStream _insFileStream = new FileStream(_Settings_PathFile, FileMode.Create, FileAccess.Write);     
-                StreamWriter _insStreamWriter = new StreamWriter(_insFileStream);
-                _insStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
-                _insStreamWriter.Write(_SettingsFile);
-                _insStreamWriter.Flush();
-                _insStreamWriter.Close();
-                _WriteDoneOk = true;
 
                 EncryptionDecryption _insEncryptionDecryption = new EncryptionDecryption();
 
-                _insEncryptionDecryption.FileEncrypt(_Settings_PathFile, En_Decryption_Password);
-
-                File.Delete(_Settings_PathFile);
+                _insEncryptionDecryption.FileEncrypt(_Settings_PathFile, _Settings_Text, En_Decryption_Password);
 
                 Settings[0] = Data[0];
                 Settings[1] = Data[1];
                 Settings[2] = Data[2];
                 Settings[3] = Data[3];
                 Settings[4] = Data[4];
+
+                _WriteDoneOk = true;
 
             }
             catch (Exception e)
@@ -171,37 +153,24 @@ namespace LicenseGenerator.Core
 
                 EncryptionDecryption _insEncryptionDecryption = new EncryptionDecryption();
 
-                _insEncryptionDecryption.FileDecrypt(_Settings_PathFile +".aes", _Settings_PathFile, En_Decryption_Password);
-
-                StreamReader _insStreamReader = new StreamReader(_Settings_PathFile);
-                string _SingleLine;
+                string _Output_Text = _insEncryptionDecryption.FileDecrypt(_Settings_PathFile, En_Decryption_Password);
 
                 Settings.Clear();
 
-                while ((_SingleLine = _insStreamReader.ReadLine()) != null)
+                string[] _Temp_Data;
+
+                _Temp_Data = _Output_Text.Split("[License]");
+
+                Settings.Add(_Temp_Data[0]);
+
+                string[] _Password_Data = _Temp_Data[1].Split("[Passwords]");
+                string[] _AllPasswords = _Password_Data[0].Split(";");
+
+                foreach (var _Single_Passwords in _AllPasswords)
                 {
-                    string[] _Temp_Data;
-                    if (_SingleLine.Contains("[License]"))
-                    {
-                        _Temp_Data = _SingleLine.Split("[License]");
-
-                        Settings.Add(_Temp_Data[0]);                    }
-
-                    if (_SingleLine.Contains("[Passwords]"))
-                    {
-                        _Temp_Data =  _SingleLine.Split("[Passwords]");
-                        string[] _AllPasswords = _Temp_Data[0].Split(";");
-
-                        foreach (var _Single_Passwords in _AllPasswords)
-                        {
-                            Settings.Add(_Single_Passwords);
-                        }
-                    }
-
+                    Settings.Add(_Single_Passwords);
+                    Console.WriteLine(_Single_Passwords);
                 }
-                _insStreamReader.Close();
-
-                File.Delete(_Settings_PathFile);
 
             }
             catch (Exception e)

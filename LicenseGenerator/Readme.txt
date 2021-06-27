@@ -4,7 +4,7 @@ Innolas License Generator
 
 [Version] 
 
-Version 0.1 Alpha
+Version 1 Beta
 
 
 [Headline]

@@ -6,6 +6,6 @@
     "\\LicenseGenerator\\MVVM",
     "\\LicenseGenerator\\MVVM\\View"
   ],
-  "SelectedNode": "\\LicenseGenerator\\Core\\CreateMD5Hash.cs",
+  "SelectedNode": "\\LicenseGenerator\\MVVM\\View\\SettingsView.xaml.cs",
   "PreviewInSolutionExplorer": false
 }
