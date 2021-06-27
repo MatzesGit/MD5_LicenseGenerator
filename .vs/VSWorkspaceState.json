@@ -6,6 +6,10 @@
     "\\LicenseGenerator\\MVVM",
     "\\LicenseGenerator\\MVVM\\View"
   ],
+<<<<<<< HEAD
   "SelectedNode": "\\LicenseGenerator.sln",
+=======
+  "SelectedNode": "\\LicenseGenerator\\MVVM\\View\\SettingsView.xaml.cs",
+>>>>>>> development
   "PreviewInSolutionExplorer": false
 }
