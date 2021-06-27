@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LicenseGenerator</name>
+    </assembly>
+    <members>
+        <member name="T:LicenseGenerator.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:LicenseGenerator.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:LicenseGenerator.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:LicenseGenerator.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:LicenseGenerator.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:LicenseGenerator.MVVM.View.AboutView">
+            <summary>
+            Interaktionslogik für AboutView.xaml
+            </summary>
+            
+            <summary>
+            AboutView
+            </summary>
+        </member>
+        <member name="M:LicenseGenerator.MVVM.View.AboutView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:LicenseGenerator.MVVM.View.GenerateView">
+            <summary>
+            Interaktionslogik für GenerateView.xaml
+            </summary>
+            <summary>
+            GenerateView
+            </summary>
+        </member>
+        <member name="M:LicenseGenerator.MVVM.View.GenerateView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:LicenseGenerator.MVVM.View.ManageMachinesView">
+            <summary>
+            Interaktionslogik für AddMachinesView.xaml
+            </summary>
+            <summary>
+            ManageMachinesView
+            </summary>
+        </member>
+        <member name="M:LicenseGenerator.MVVM.View.ManageMachinesView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:LicenseGenerator.MVVM.View.SettingsView">
+            <summary>
+            Interaktionslogik für SettingsView.xaml
+            </summary>
+            <summary>
+            SettingsView
+            </summary>
+        </member>
+        <member name="M:LicenseGenerator.MVVM.View.SettingsView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

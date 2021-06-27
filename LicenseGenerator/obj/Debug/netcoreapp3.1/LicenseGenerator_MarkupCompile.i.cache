@@ -16,5 +16,5 @@ C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\App.xaml
 219-78305343
 MainWindow.xaml;MVVM\View\AboutView.xaml;MVVM\View\GenerateView.xaml;MVVM\View\ManageMachinesView.xaml;MVVM\View\SettingsView.xaml;Theme\ClickButtonTheme.xaml;Theme\FileButtonTheme.xaml;Theme\GridViewHeaderTheme.xaml;Theme\LineLabelTheme.xaml;Theme\MenuButtonTheme.xaml;Theme\RadioButtonTheme.xaml;Theme\TextboxTheme.xaml;
 
-True
+False
 

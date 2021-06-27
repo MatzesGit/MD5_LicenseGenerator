@@ -6,6 +6,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin</OutputPath>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Innolas_Logo.png" />
   </ItemGroup>
@@ -13,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Fonds\" />
     <Folder Include="Images\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,5 +39,19 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <StartupObject>LicenseGenerator.App</StartupObject>
+    <ApplicationIcon />
+    <Win32Resource />
+    <Company>Innolas Solutions GmbH</Company>
+    <Description>This program is made to create a license .dat files for the PLC machines license.</Description>
+    <SignAssembly>false</SignAssembly>
+    <Product>LicenseGenerator</Product>
+    <Authors>Mathias Stritzke</Authors>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
 
 </Project>

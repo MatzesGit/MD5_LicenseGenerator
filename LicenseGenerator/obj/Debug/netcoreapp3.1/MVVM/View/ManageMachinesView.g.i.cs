@@ -173,7 +173,7 @@ namespace LicenseGenerator.MVVM.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LicenseGenerator;V1.0.0.0;component/mvvm/view/managemachinesview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LicenseGenerator;component/mvvm/view/managemachinesview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\MVVM\View\ManageMachinesView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -36,12 +36,26 @@ namespace LicenseGenerator.Core
             try
             {
                 // Save string to .cfg //
-                FileStream _insFileStream = new FileStream(_MachineStoragePathFile, FileMode.OpenOrCreate, FileAccess.Write);
-                StreamWriter _insStreamWriter = new StreamWriter(_insFileStream);
-                _insStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
-                _insStreamWriter.Write("\r\n" + _MachineInformations);
-                _insStreamWriter.Flush();
-                _insStreamWriter.Close();
+                if (File.Exists(_MachineStoragePathFile))
+                {
+                    FileStream _insFileStream = new FileStream(_MachineStoragePathFile, FileMode.Open, FileAccess.Write);
+                    StreamWriter _insStreamWriter = new StreamWriter(_insFileStream);
+                    _insStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
+                    _insStreamWriter.Write("\r\n" + _MachineInformations);
+                    _insStreamWriter.Flush();
+                    _insStreamWriter.Close();
+                }
+                else
+                {
+                    _ = Directory.CreateDirectory(Path.GetDirectoryName(_MachineStoragePathFile));
+                    FileStream _insFileStream = new FileStream(_MachineStoragePathFile, FileMode.Create, FileAccess.Write);
+                    StreamWriter _insStreamWriter = new StreamWriter(_insFileStream);
+                    _insStreamWriter.BaseStream.Seek(0, SeekOrigin.End);
+                    _insStreamWriter.Write(_MachineInformations);
+                    _insStreamWriter.Flush();
+                    _insStreamWriter.Close();
+                }
+
                 _WriteDoneOk = true;
             }
             catch (Exception e)
@@ -107,28 +121,34 @@ namespace LicenseGenerator.Core
             string _MachineStoragePathFile = _Path + MachineStorageFile;
 
             // Read string from .cfg //
-            StreamReader _insStreamReader = new StreamReader(_MachineStoragePathFile);
+            if (File.Exists(_MachineStoragePathFile))
+            {
+                StreamReader _insStreamReader = new StreamReader(_MachineStoragePathFile);
 
-            string _Single_Parameter;
+                string _Single_Parameter;
 
-            List<List<string>> _AllData = new List<List<string>>();
+                List<List<string>> _AllData = new List<List<string>>();
 
-            while ((_Single_Parameter = _insStreamReader.ReadLine()) != null)
-            {              
-                string[] _SplitData = _Single_Parameter.Split(';');
+                while ((_Single_Parameter = _insStreamReader.ReadLine()) != null)
+                {
+                    string[] _SplitData = _Single_Parameter.Split(';');
 
-                List<string> list = new List<string>();
-                List<string> _Data = list;
-                _Data.Add(_SplitData[0]);
-                _Data.Add(_SplitData[1]);
-                _Data.Add(_SplitData[2]);
+                    List<string> list = new List<string>();
+                    List<string> _Data = list;
+                    _Data.Add(_SplitData[0]);
+                    _Data.Add(_SplitData[1]);
+                    _Data.Add(_SplitData[2]);
 
-                _AllData.Add(_Data);
+                    _AllData.Add(_Data);
+                }
+
+                _insStreamReader.Close();
+                return _AllData;
             }
-
-            _insStreamReader.Close();
-
-            return _AllData;
+            else
+            {
+                return null;
+            }
         }
 
 

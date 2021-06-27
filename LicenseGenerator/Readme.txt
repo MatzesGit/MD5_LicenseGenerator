@@ -9,7 +9,7 @@ Version 1 Beta
 
 [Headline]
 
-This program is made to create a license .dat file for the PLC machines license.
+This program is made to create a license .dat files for the PLC machines license.
 
 
 [Description]

@@ -32,46 +32,50 @@ namespace LicenseGenerator.Core
             string _Readme_PathFile = _Path + Readme_File;
 
             // Read string from .cfg //
-            StreamReader _insStreamReader = new StreamReader(_Readme_PathFile);
-
-            string _Single_Line;
-
-            int _i = 0;
-
-            while ((_Single_Line = _insStreamReader.ReadLine()) != null)
+            if (File.Exists(_Readme_PathFile))
             {
-                if (_Single_Line.Contains("[Title]"))
+                StreamReader _insStreamReader = new StreamReader(_Readme_PathFile);
+
+                string _Single_Line;
+
+                int _i = 0;
+
+                while ((_Single_Line = _insStreamReader.ReadLine()) != null)
                 {
-                    _i = ((int)About_Text_Enum.Title_Text);
-                    _Single_Line = "";
-                }
-                else if (_Single_Line.Contains("[Version]"))
-                {
-                    _i = ((int)About_Text_Enum.Version_Text);
-                    _Single_Line = "";
-                }
-                else if (_Single_Line.Contains("[Headline]"))
-                {
-                    _i = ((int)About_Text_Enum.Headline_Text);
-                    _Single_Line = "";
-                }
-                else if (_Single_Line.Contains("[Description]"))
-                {
-                    _i = ((int)About_Text_Enum.Description_Text);
-                    _Single_Line = "";
+                    if (_Single_Line.Contains("[Title]"))
+                    {
+                        _i = ((int)About_Text_Enum.Title_Text);
+                        _Single_Line = "";
+                    }
+                    else if (_Single_Line.Contains("[Version]"))
+                    {
+                        _i = ((int)About_Text_Enum.Version_Text);
+                        _Single_Line = "";
+                    }
+                    else if (_Single_Line.Contains("[Headline]"))
+                    {
+                        _i = ((int)About_Text_Enum.Headline_Text);
+                        _Single_Line = "";
+                    }
+                    else if (_Single_Line.Contains("[Description]"))
+                    {
+                        _i = ((int)About_Text_Enum.Description_Text);
+                        _Single_Line = "";
+                    }
+
+                    if (_Text_items[_i] == "")
+                    {
+                        _Text_items[_i] = _Single_Line;
+                    }
+                    else
+                    {
+                        _Text_items[_i] = $"{ _Text_items[_i]}{_Single_Line}";
+                    }
+
                 }
 
-                if (_Text_items[_i] == "")
-                {
-                    _Text_items[_i] = _Single_Line;
-                }
-                else
-                {
-                    _Text_items[_i] = $"{ _Text_items[_i]}{_Single_Line}";
-                }
-
+                _insStreamReader.Close();
             }
-            _insStreamReader.Close();
 
             return _Text_items;
         }

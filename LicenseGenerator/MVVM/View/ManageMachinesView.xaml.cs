@@ -69,14 +69,17 @@ namespace LicenseGenerator.MVVM.View
             MachineDetails.Items.Clear();
             items.Clear();
 
-            foreach (var _Data in _AllData)
+            if (_AllData != null)
             {
-                items.Add(new ListData()
+                foreach (var _Data in _AllData)
                 {
-                    Pxxx_Data_List = _Data[0],
-                    Customer_Data_List = _Data[1],
-                    Mac_Data_List = _Data[2]
-                });
+                    items.Add(new ListData()
+                    {
+                        Pxxx_Data_List = _Data[0],
+                        Customer_Data_List = _Data[1],
+                        Mac_Data_List = _Data[2]
+                    });
+                }
             }
 
             MachineDetails.ItemsSource = items;

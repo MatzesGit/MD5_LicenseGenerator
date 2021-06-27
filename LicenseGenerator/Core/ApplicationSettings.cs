@@ -169,7 +169,6 @@ namespace LicenseGenerator.Core
                 foreach (var _Single_Passwords in _AllPasswords)
                 {
                     Settings.Add(_Single_Passwords);
-                    Console.WriteLine(_Single_Passwords);
                 }
 
             }
