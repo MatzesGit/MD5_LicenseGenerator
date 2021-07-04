@@ -75,9 +75,9 @@
 
                             <Grid Width="80" HorizontalAlignment="Left">
                                 <TextBox Text="{Binding ElementName=Number_Textbox, Path=Text}"
-                                     Uid="Pxxx"
-                                     IsEnabled="False"
-                                     Style="{StaticResource ModernTextBox}"/>
+                                         Uid="Pxxx"
+                                         IsEnabled="False"
+                                         Style="{StaticResource ModernTextBox}"/>
                                 <TextBox Name="Number_Textbox"
                                      Margin="7,4,7,4"
                                      Background="Transparent"

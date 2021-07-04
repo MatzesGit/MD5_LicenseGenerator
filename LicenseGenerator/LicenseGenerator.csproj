@@ -44,14 +44,15 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <StartupObject>LicenseGenerator.App</StartupObject>
-    <ApplicationIcon />
+    <ApplicationIcon>LicenseGenerator.ico</ApplicationIcon>
     <Win32Resource />
     <Company>Innolas Solutions GmbH</Company>
     <Description>This program is made to create a license .dat files for the PLC machines license.</Description>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
     <Product>LicenseGenerator</Product>
     <Authors>Mathias Stritzke</Authors>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>

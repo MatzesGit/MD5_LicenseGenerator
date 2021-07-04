@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Windows;
-using LicenseGenerator.Core;
 
 namespace LicenseGenerator.Core
 {

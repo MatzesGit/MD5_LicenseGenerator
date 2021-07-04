@@ -3,8 +3,8 @@
   <metadata>
     <id>LicenseGenerator</id>
     <version>1.0.0</version>
-    <authors>LicenseGenerator</authors>
-    <description>Package Description</description>
+    <authors>Mathias Stritzke</authors>
+    <description>This program is made to create a license .dat files for the PLC machines license.</description>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
         <dependency id="Microsoft-WindowsAPICodePack-Core" version="1.1.4" exclude="Build,Analyzers" />
@@ -19,7 +19,7 @@
     </frameworkReferences>
   </metadata>
   <files>
-    <file src="C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\bin\Debug\netcoreapp3.1\LicenseGenerator.runtimeconfig.json" target="lib\netcoreapp3.1\LicenseGenerator.runtimeconfig.json" />
-    <file src="C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\bin\Debug\netcoreapp3.1\LicenseGenerator.dll" target="lib\netcoreapp3.1\LicenseGenerator.dll" />
+    <file src="C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\bin\LicenseGenerator.runtimeconfig.json" target="lib\netcoreapp3.1\LicenseGenerator.runtimeconfig.json" />
+    <file src="C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\bin\LicenseGenerator.dll" target="lib\netcoreapp3.1\LicenseGenerator.dll" />
   </files>
 </package>

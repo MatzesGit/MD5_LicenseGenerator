@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Media;
 using System.Windows;
 using System.Windows.Controls;
 using LicenseGenerator.Core;
@@ -150,29 +151,55 @@ namespace LicenseGenerator.MVVM.View
 
         // Textboxes
         public string Machine_Number { get => Number_Textbox.Text; set => Number_Textbox.Text = value; }
+        public SolidColorBrush Machine_Number_Color { set => Number_Textbox.Foreground = value; }
         public string Machine_Customer { get => Customer_Textbox.Text; set => Customer_Textbox.Text = value; }
         public string Machine_Mac { get => Mac_Textbox.Text; set => Mac_Textbox.Text = value; }
 
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            bool _WriteDoneOk = GetSetMachineInformations.WriteToFile(Machine_Number, Machine_Customer, Machine_Mac);
+            bool _WriteDoneOk = false;
 
             string _message;
             string _caption = "Add Machine";
 
-            if (_WriteDoneOk)
+            if (Machine_Number.Contains("P") || Machine_Number.Contains("p"))
             {
-                _message = "Machine is sucessfully add to database!";
+                // change small to letter to capital letter in case small letter was typed in
+                if (Machine_Number.Contains("p"))
+                {
+                    string[] _Number = Machine_Number.Split("p");
 
-                Machine_Number = "";
-                Machine_Customer = "";
-                Machine_Mac = "";
+                    string _Machine_Number = _Number[1];
+
+                    _WriteDoneOk = GetSetMachineInformations.WriteToFile($"P{_Machine_Number}", Machine_Customer, Machine_Mac);
+
+                }
+                else
+                {
+                    _WriteDoneOk = GetSetMachineInformations.WriteToFile(Machine_Number, Machine_Customer, Machine_Mac);
+                }
+
+                if (_WriteDoneOk)
+                {
+                    _message = "Machine is sucessfully add to database!";
+
+                    Machine_Number = "";
+                    Machine_Customer = "";
+                    Machine_Mac = "";
+                    Machine_Number_Color = Brushes.White;
+                }
+                else
+                {
+                    _message = "Error writing machine data to datebase";
+                }
             }
             else
             {
-                _message = "Error writing machine data to datebase";
+                Machine_Number_Color = Brushes.Red;
+                _message = "Please check your input";
             }
+
 
             MessageBoxButton buttons = MessageBoxButton.OK;
             _ = MessageBox.Show(_message, _caption, buttons);
