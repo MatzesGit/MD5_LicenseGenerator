@@ -122,3 +122,4 @@ C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\obj\Debug\LicenseGenerat
 C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\obj\Debug\LicenseGenerator.dll
 C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\obj\Debug\LicenseGenerator.pdb
 C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\obj\Debug\LicenseGenerator.genruntimeconfig.cache
+C:\CSharpPrograms\MD5_LicenseGenerator\LicenseGenerator\obj\Debug\LicenseGenerator.csproj.AssemblyReference.cache

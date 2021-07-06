@@ -52,7 +52,7 @@
     <Product>LicenseGenerator</Product>
     <Authors>Mathias Stritzke</Authors>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
